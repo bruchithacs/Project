@@ -1,0 +1,12 @@
+# Windows system folders
+$RECYCLE.BIN/
+System Volume Information/
+
+# Node / frontend noise (optional but recommended)
+node_modules/
+dist/
+build/
+
+# OS files
+Thumbs.db
+.DS_Store

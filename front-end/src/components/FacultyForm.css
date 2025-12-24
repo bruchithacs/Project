@@ -1,0 +1,337 @@
+/* FacultyForm.css */
+
+.faculty-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #ffffff;
+    position: relative;
+    z-index: 3;
+  }
+  
+  .faculty-form h3 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, #f6f7f8, #f3f5f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  /* Error Message */
+  .faculty-form .form-error {
+    background: rgba(248, 215, 218, 0.9);
+    color: #721c24;
+    padding: 8px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Input Row for Three Fields */
+  .faculty-form .input-row {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+  }
+  
+  /* Input Box (Individual Field Container) */
+  .faculty-form .input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  /* Ensure consistent height and alignment for all fields */
+  .faculty-form .input-box input,
+  .faculty-form .input-box select,
+  .faculty-form .file-input-box input[type="file"] {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 14px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px; /* Uniform height for all fields */
+    line-height: 20px; /* Adjust line height for text alignment */
+    display: flex;
+    align-items: center; /* Vertically center text within inputs */
+  }
+  
+  /* Placeholder styling */
+  .faculty-form .input-box input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  /* Ensure select options are visible */
+  .faculty-form .input-box select option {
+    color: #ffffff;
+    background: rgba(74, 95, 127, 0.8);
+    font-size: 14px;
+  }
+  
+  .faculty-form .input-box select option:hover {
+    background: rgba(138, 177, 232, 0.8);
+    color: #ffffff;
+  }
+  
+  .faculty-form .input-box input:focus,
+  .faculty-form .input-box select:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(138, 177, 232, 0.5);
+  }
+  
+  .faculty-form .input-box label,
+  .faculty-form .file-input-box label {
+    font-size: 18px;
+    color: yellow;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* File Input Styling */
+  .faculty-form .file-input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1; /* Ensure file input box takes equal width */
+    min-width: 0;
+  }
+  
+  .faculty-form .file-input-box input[type="file"]::-webkit-file-upload-button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a5f7f;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    height: 100%; /* Match the input height */
+    line-height: 20px; /* Align text vertically */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .faculty-form .file-input-box input[type="file"]::-webkit-file-upload-button:hover {
+    background: linear-gradient(90deg, #8ab1e8, #4a5f7f);
+    transform: translateY(-2px);
+  }
+  
+  /* Fallback for non-WebKit browsers (e.g., Firefox) */
+  .faculty-form .file-input-box input[type="file"]::-moz-file-upload-button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a5f7f;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    height: 100%;
+    line-height: 20px;
+    margin: 0;
+  }
+  
+  .faculty-form .file-input-box input[type="file"]::-moz-file-upload-button:hover {
+    background: linear-gradient(90deg, #8ab1e8, #4a5f7f);
+    transform: translateY(-2px);
+  }
+  
+  .faculty-form .form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .faculty-form .btn,
+  .faculty-form .cancel-btn {
+    padding: 8px 15px;
+    border: none;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .faculty-form .btn::before,
+  .faculty-form .cancel-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .faculty-form .btn:hover::before,
+  .faculty-form .cancel-btn:hover::before {
+    left: 100%;
+  }
+  
+  .faculty-form .btn {
+    background: linear-gradient(90deg, #4a5f7f, #8ab1e8);
+    color: #ffffff;
+  }
+  
+  .faculty-form .btn:hover {
+    background: linear-gradient(90deg, #8ab1e8, #4a5f7f);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .faculty-form .pulse-btn {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(138, 177, 232, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(138, 177, 232, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(138, 177, 232, 0); }
+  }
+  
+  .faculty-form .cancel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .faculty-form .cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Fade-In Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .faculty-form {
+      padding: 15px;
+      max-width: 100%;
+    }
+  
+    .faculty-form h3 {
+      font-size: 20px;
+    }
+  
+    .faculty-form .input-row {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .faculty-form .input-box label,
+    .faculty-form .file-input-box label {
+      font-size: 14px;
+    }
+  
+    .faculty-form .input-box input,
+    .faculty-form .input-box select,
+    .faculty-form .file-input-box input[type="file"] {
+      padding: 6px;
+      font-size: 12px;
+      height: 36px;
+    }
+  
+    .faculty-form .input-box select option {
+      font-size: 12px;
+    }
+  
+    .faculty-form .file-input-box input[type="file"]::-webkit-file-upload-button,
+    .faculty-form .file-input-box input[type="file"]::-moz-file-upload-button {
+      padding: 5px 10px;
+      font-size: 10px;
+    }
+  
+    .faculty-form .btn,
+    .faculty-form .cancel-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .faculty-form {
+      padding: 10px;
+    }
+  
+    .faculty-form h3 {
+      font-size: 18px;
+    }
+  
+    .faculty-form .input-row {
+      gap: 8px;
+    }
+  
+    .faculty-form .input-box label,
+    .faculty-form .file-input-box label {
+      font-size: 12px;
+    }
+  
+    .faculty-form .input-box input,
+    .faculty-form .input-box select,
+    .faculty-form .file-input-box input[type="file"] {
+      padding: 5px;
+      font-size: 10px;
+      height: 32px;
+    }
+  
+    .faculty-form .input-box select option {
+      font-size: 10px;
+    }
+  
+    .faculty-form .file-input-box input[type="file"]::-webkit-file-upload-button,
+    .faculty-form .file-input-box input[type="file"]::-moz-file-upload-button {
+      padding: 4px 8px;
+      font-size: 10px;
+    }
+  
+    .faculty-form .btn,
+    .faculty-form .cancel-btn {
+      padding: 5px 10px;
+      font-size: 10px;
+    }
+  
+    .faculty-form .form-actions {
+      flex-direction: column;
+      gap: 6px;
+    }
+  
+    .faculty-form .btn,
+    .faculty-form .cancel-btn {
+      width: 100%;
+    }
+  }

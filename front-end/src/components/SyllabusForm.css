@@ -1,0 +1,296 @@
+/* SyllabusForm.css */
+
+.syllabus-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for glassmorphism */
+    backdrop-filter: blur(10px); /* Glassmorphism blur effect */
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    max-width: 400px; /* Narrower width since fields are stacked */
+    margin: 0 auto;
+    color: #ffffff; /* White text for contrast over video background */
+    position: relative;
+    z-index: 3; /* Above video and overlay */
+  }
+  
+  .syllabus-form h3 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, #f6f7f8, #f3f5f7); /* Gradient matching navbar */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  /* Error Message */
+  .syllabus-form .form-error {
+    background: rgba(248, 215, 218, 0.9);
+    color: #721c24;
+    padding: 8px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Input Box (Individual Field Container) */
+  .syllabus-form .input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%; /* Full width for stacked layout */
+  }
+  
+  /* File Input Box */
+  .syllabus-form .file-input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%; /* Full width for stacked layout */
+  }
+  
+  /* Ensure consistent height and alignment for all fields */
+  .syllabus-form .input-box input,
+  .syllabus-form .file-input-box input[type="file"] {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 14px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Placeholder styling */
+  .syllabus-form .input-box input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .syllabus-form .input-box input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(138, 177, 232, 0.5);
+  }
+  
+  .syllabus-form .input-box label,
+  .syllabus-form .file-input-box label {
+    font-size: 18px;
+    color: yellow;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* File Input Styling */
+  .syllabus-form .file-input-box input[type="file"]::-webkit-file-upload-button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a5f7f;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    height: 100%;
+    line-height: 20px;
+    margin: 0;
+  }
+  
+  .syllabus-form .file-input-box input[type="file"]::-webkit-file-upload-button:hover {
+    background: linear-gradient(90deg, #8ab1e8, #4a5f7f);
+    transform: translateY(-2px);
+  }
+  
+  /* Fallback for non-WebKit browsers (e.g., Firefox) */
+  .syllabus-form .file-input-box input[type="file"]::-moz-file-upload-button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a5f7f;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    height: 100%;
+    line-height: 20px;
+    margin: 0;
+  }
+  
+  .syllabus-form .file-input-box input[type="file"]::-moz-file-upload-button:hover {
+    background: linear-gradient(90deg, #8ab1e8, #4a5f7f);
+    transform: translateY(-2px);
+  }
+  
+  .syllabus-form .form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .syllabus-form .btn,
+  .syllabus-form .cancel-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .syllabus-form .btn::before,
+  .syllabus-form .cancel-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .syllabus-form .btn:hover::before,
+  .syllabus-form .cancel-btn:hover::before {
+    left: 100%;
+  }
+  
+  .syllabus-form .btn {
+    background: linear-gradient(90deg, #4a5f7f, #8ab1e8);
+    color: #ffffff;
+  }
+  
+  .syllabus-form .btn:hover {
+    background: linear-gradient(90deg, #8ab1e8, #4a5f7f);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .syllabus-form .pulse-btn {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(138, 177, 232, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(138, 177, 232, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(138, 177, 232, 0); }
+  }
+  
+  .syllabus-form .cancel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .syllabus-form .cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Fade-In Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .syllabus-form {
+      padding: 15px;
+      max-width: 100%;
+    }
+  
+    .syllabus-form h3 {
+      font-size: 20px;
+    }
+  
+    .syllabus-form .input-box label,
+    .syllabus-form .file-input-box label {
+      font-size: 14px;
+    }
+  
+    .syllabus-form .input-box input,
+    .syllabus-form .file-input-box input[type="file"] {
+      padding: 6px;
+      font-size: 12px;
+      height: 36px;
+    }
+  
+    .syllabus-form .file-input-box input[type="file"]::-webkit-file-upload-button,
+    .syllabus-form .file-input-box input[type="file"]::-moz-file-upload-button {
+      padding: 5px 10px;
+      font-size: 10px;
+    }
+  
+    .syllabus-form .btn,
+    .syllabus-form .cancel-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .syllabus-form {
+      padding: 10px;
+    }
+  
+    .syllabus-form h3 {
+      font-size: 18px;
+    }
+  
+    .syllabus-form .input-box label,
+    .syllabus-form .file-input-box label {
+      font-size: 12px;
+    }
+  
+    .syllabus-form .input-box input,
+    .syllabus-form .file-input-box input[type="file"] {
+      padding: 5px;
+      font-size: 10px;
+      height: 32px;
+    }
+  
+    .syllabus-form .file-input-box input[type="file"]::-webkit-file-upload-button,
+    .syllabus-form .file-input-box input[type="file"]::-moz-file-upload-button {
+      padding: 4px 8px;
+      font-size: 10px;
+    }
+  
+    .syllabus-form .btn,
+    .syllabus-form .cancel-btn {
+      padding: 5px px;
+      font-size: 10px;
+    }
+   
+  
+    .syllabus-form .form-actions {
+      flex-direction: column;
+      gap: 5px;
+    }
+  
+    .syllabus-form .btn,
+    .syllabus-form .cancel-btn {
+      width: 100%;
+    }
+  }

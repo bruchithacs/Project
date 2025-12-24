@@ -1,0 +1,288 @@
+/* MaterialForm.css or wherever this CSS is defined */
+
+.material-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Form Heading */
+.material-form .form-heading {
+  font-size: 32px;
+  font-weight: 600;
+  background-color: white;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: headingScale 1s ease forwards;
+}
+
+/* Error and Success Messages */
+.material-form .form-error {
+  background: rgba(248, 215, 218, 0.9);
+  color: #721c24;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.material-form .form-success {
+  background: rgba(212, 237, 218, 0.9);
+  color: #155724;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Box (Container for Label and Input) */
+.material-form .input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.material-form .input-box label {
+  font-size: 23px;
+  font-weight: 500;
+  color: yellow;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Input Fields and Select (Glassmorphism Effect) */
+.material-form .input-box input,
+.material-form .input-box select {
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  font-size: 24px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.material-form .input-box input::placeholder,
+.material-form .input-box select {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Ensure select options are visible */
+.material-form .input-box select option {
+  color: #ffffff; /* White text for options */
+  background: rgba(74, 95, 127, 0.8); /* Dark background to contrast with white text */
+}
+
+/* Optional: Style for hover on options */
+.material-form .input-box select option:hover {
+  background: rgba(138, 177, 232, 0.8); /* Light blue on hover */
+  color: #ffffff; /* Ensure text remains visible on hover */
+}
+
+.material-form .input-box input:focus,
+.material-form .input-box select:focus {
+  border-color: #8ab1e8;
+  outline: none;
+  box-shadow: 0 0 5px rgba(138, 177, 232, 0.5);
+}
+
+/* File Input Styling */
+.material-form .file-input-box input[type="file"] {
+  padding: 5px; /* Reduced padding for file input */
+  border: none; /* Remove default border */
+  background: none;
+  color: #ffffff;
+}
+
+.material-form .file-input-box input[type="file"]::-webkit-file-upload-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4a5f7f;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.material-form .file-input-box input[type="file"]::-webkit-file-upload-button:hover {
+  background: linear-gradient(90deg, #8ab1e8, #4a5f7f);
+  transform: translateY(-2px);
+}
+
+/* Fallback for non-WebKit browsers (e.g., Firefox) */
+.material-form .file-input-box input[type="file"]::-moz-file-upload-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4a5f7f;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.material-form .file-input-box input[type="file"]::-moz-file-upload-button:hover {
+  background: linear-gradient(90deg, #8ab1e8, #4a5f7f);
+  transform: translateY(-2px);
+}
+
+/* Form Actions (Buttons Container) */
+.material-form .form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Submit and Cancel Buttons */
+.material-form .btn,
+.material-form .cancel-btn {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shine Effect on Buttons */
+.material-form .btn::before,
+.material-form .cancel-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.material-form .btn:hover::before,
+.material-form .cancel-btn:hover::before {
+  left: 100%;
+}
+
+.material-form .btn {
+  background: linear-gradient(90deg, #4a5f7f, #8ab1e8);
+  color: #ffffff;
+}
+
+.material-form .btn:hover {
+  background: linear-gradient(90deg, #8ab1e8, #4a5f7f);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Pulse Animation for Submit Button */
+.material-form .pulse-btn {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(138, 177, 232, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(138, 177, 232, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(138, 177, 232, 0); }
+}
+
+.material-form .cancel-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.material-form .cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .material-form .form-heading {
+    font-size: 24px;
+  }
+
+  .material-form .input-box label {
+    font-size: 14px;
+  }
+
+  .material-form .input-box input,
+  .material-form .input-box select {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .material-form .input-box select option {
+    font-size: 13px; /* Adjust option font size for smaller screens */
+  }
+
+  .material-form .file-input-box input[type="file"]::-webkit-file-upload-button {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .material-form .btn,
+  .material-form .cancel-btn {
+    padding: 8px 15px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .material-form .form-heading {
+    font-size: 20px;
+  }
+
+  .material-form .input-box label {
+    font-size: 12px;
+  }
+
+  .material-form .input-box input,
+  .material-form .input-box select {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .material-form .input-box select option {
+    font-size: 12px; /* Adjust option font size for smaller screens */
+  }
+
+  .material-form .file-input-box input[type="file"]::-webkit-file-upload-button {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .material-form .btn,
+  .material-form .cancel-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .material-form .form-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .material-form .btn,
+  .material-form .cancel-btn {
+    width: 100%;
+  }
+}
+
+/* Animation for Heading Scale */
+@keyframes headingScale {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

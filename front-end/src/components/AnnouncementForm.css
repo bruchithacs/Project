@@ -1,0 +1,213 @@
+.announcement-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Form Heading */
+  .announcement-form .form-heading {
+    font-size: 25px;
+    font-weight: 600;
+    background-color: white;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: headingScale 1s ease forwards;
+  }
+  
+  /* Heading Animation */
+  @keyframes headingScale {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  
+  /* Error and Success Messages */
+  .announcement-form .form-error {
+    background: rgba(248, 215, 218, 0.9);
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .announcement-form .form-success {
+    background: rgba(212, 237, 218, 0.9);
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Input Box (Container for Label and Input) */
+  .announcement-form .input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .announcement-form .input-box label {
+    font-size: 23px;
+    font-weight: 500;
+    color: yellow;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Input Fields and Textarea (Glassmorphism Effect) */
+  .announcement-form .input-box input,
+  .announcement-form .input-box textarea {
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    font-size: 24px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .announcement-form .input-box input::placeholder,
+  .announcement-form .input-box textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .announcement-form .input-box input:focus,
+  .announcement-form .input-box textarea:focus {
+    border-color: #8ab1e8;
+    outline: none;
+    box-shadow: 0 0 5px rgba(138, 177, 232, 0.5);
+  }
+  
+  /* Form Actions (Buttons Container) */
+  .announcement-form .form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Submit and Cancel Buttons */
+  .announcement-form .btn,
+  .announcement-form .cancel-btn {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Shine Effect on Buttons */
+  .announcement-form .btn::before,
+  .announcement-form .cancel-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .announcement-form .btn:hover::before,
+  .announcement-form .cancel-btn:hover::before {
+    left: 100%;
+  }
+  
+  .announcement-form .btn {
+    background: linear-gradient(90deg, #4a5f7f, #8ab1e8);
+    color: #ffffff;
+  }
+  
+  .announcement-form .btn:hover {
+    background: linear-gradient(90deg, #8ab1e8, #4a5f7f);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Pulse Animation for Submit Button */
+  .announcement-form .pulse-btn {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(138, 177, 232, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(138, 177, 232, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(138, 177, 232, 0); }
+  }
+  
+  .announcement-form .cancel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .announcement-form .cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .announcement-form .form-heading {
+      font-size: 24px;
+    }
+  
+    .announcement-form .input-box label {
+      font-size: 14px;
+    }
+  
+    .announcement-form .input-box input,
+    .announcement-form .input-box textarea {
+      padding: 8px;
+      font-size: 13px;
+    }
+  
+    .announcement-form .btn,
+    .announcement-form .cancel-btn {
+      padding: 8px 15px;
+      font-size: 13px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .announcement-form .form-heading {
+      font-size: 20px;
+    }
+  
+    .announcement-form .input-box label {
+      font-size: 12px;
+    }
+  
+    .announcement-form .input-box input,
+    .announcement-form .input-box textarea {
+      padding: 6px;
+      font-size: 12px;
+    }
+  
+    .announcement-form .btn,
+    .announcement-form .cancel-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+  
+    .announcement-form .form-actions {
+      flex-direction: column;
+      gap: 8px;
+    }
+  
+    .announcement-form .btn,
+    .announcement-form .cancel-btn {
+      width: 100%;
+    }
+  }

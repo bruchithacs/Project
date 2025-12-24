@@ -1,0 +1,1304 @@
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white; 
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Left Corner: Logo and College Name */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+
+.navbar-logo {
+  width: 70px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.navbar .college-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #10181f; /* Dark blue */
+}
+
+/* Center: Menu */
+.navbar-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.nav-item {
+  margin: 0 1.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #10181f; /* Dark gray */
+  font-size: 1.5rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #1a3c6c; /* Dark blue on hover */
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #8ab1e8; /* Coral underline */
+  left: 0;
+  bottom: -5px;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Right Corner: Logout Button */
+.logout-btn {
+  background: linear-gradient(90deg, #4a5f7f, #070b0f); /* Gradient button */
+  color: white;
+  padding: 0.9rem 1.9rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(90deg, #4a5f7f, #94acc5); /* Reverse gradient on hover */
+}
+
+/* Hamburger Toggle (Hidden on Desktop) */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.toggle-icon {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  position: relative;
+}
+
+.toggle-icon::before,
+.toggle-icon::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+
+.toggle-icon::before {
+  top: -10px;
+}
+
+.toggle-icon::after {
+  bottom: -10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-menu {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: #e0eafc;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2rem;
+    transition: right 0.3s ease;
+  }
+
+  .navbar-menu.active {
+    right: 0;
+  }
+
+  .nav-item {
+    margin: 1rem 0;
+  }
+
+  .logout-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .navbar-toggle.active .toggle-icon {
+    background: white;
+  }
+
+  .navbar-toggle.active .toggle-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  .navbar-toggle.active .toggle-icon::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+  }
+}
+
+/* Dashboard Padding */
+.dashboard {
+  padding-top: 80px; /* Adjust for fixed navbar height */
+}
+.section {
+  width: 100vw;
+  height: 100vh; /* Full screen height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Styling for home section */
+/* Home section with background image */
+#home {
+  width: 100vw;
+  height: 100vh; /* Full screen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  /* Background Image */
+  background: url('E:\front-end\public\Assests\laptop3.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed; /* Parallax Effect */
+  /* Overlay effect */
+  position: relative;
+}
+
+#home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
+}
+.welcome-box {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#home h2 {
+  font-family: Tahoma, Verdana, sans-serif;
+  font-size: 3rem; /* Adjust size as needed */
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+#home p {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+
+
+/* Styling for other sections */
+/* 🔹 About Section Layout */
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  min-height: 100vh;
+  padding: 50px;
+}
+
+/* 📷 Left Side - Image */
+.about-image {
+  flex: 1;
+  max-width: 60%;
+  text-align: center;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 750px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 📜 Right Side - Content */
+.about-content {
+  flex: 2;
+  padding: 20px;
+  color: #ffffff;
+  max-width: 60%;
+}
+.about-content h2{
+  font-size: 35px;
+}
+
+/* ✨ Box Styling */
+.about-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.about-box:hover {
+  transform: scale(1.03);
+}
+
+/* 🔹 Headings */
+.about-box h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 29px;
+  margin-bottom: 10px;
+}
+.about-box p{
+  font-size: 20px;
+}
+.about-box ul{
+  list-style-type: none;
+}
+.about-box ul li{
+  font-size: 20px;
+}
+
+/* 📂 Syllabus Section */
+.syllabus-section {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-top: 15px;
+}
+.syllabus-section h3{
+  font-size: 23px;
+}
+.syllabus-section ul{
+  list-style-type: none;
+}
+
+/* 📥 Syllabus Download Links */
+.syllabus-section a {
+  color: #ffdd57;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.syllabus-section a:hover {
+  color: #ffbb33;
+  text-decoration: underline;
+}
+
+/* 🏆 Responsive Design */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-image {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .about-content {
+    max-width: 100%;
+  }
+}
+
+/* Material Section - Unique Futuristic Style */
+#material {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3c72, #2a5298); /* Tech-inspired gradient */
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Subtle Circuit Pattern Overlay */
+#material::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/circuit.png'); /* Circuit pattern */
+  opacity: 0.1;
+  z-index: 0;
+}
+
+/* Heading */
+#material h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Semester Buttons */
+.semester-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.semester-buttons button {
+  padding: 12px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  background: #0d1a26; /* Dark background for contrast */
+  color: #8ab1e8; /* Match navbar underline */
+  border: 2px solid #8ab1e8;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.semester-buttons button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(138, 177, 232, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.semester-buttons button:hover::before {
+  left: 100%;
+}
+
+.semester-buttons button:hover {
+  background: #8ab1e8;
+  color: #0d1a26;
+  box-shadow: 0 0 15px rgba(138, 177, 232, 0.7);
+  transform: translateY(-2px);
+}
+
+.semester-buttons .active {
+  background: #8ab1e8;
+  color: #0d1a26;
+  box-shadow: 0 0 15px rgba(138, 177, 232, 0.7);
+}
+
+/* Material List */
+.materials-list {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.material-item {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.material-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 20px rgba(138, 177, 232, 0.5);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.material-item span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.material-item a {
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffdd57; /* Bright accent color */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s ease;
+}
+
+.material-item a:hover {
+  color: #ffbb33;
+}
+
+/* No Materials Message */
+.no-materials {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  font-style: italic;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+/* Announcements Section - Noticeboard Style */
+#announcements {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Paper Texture Overlay */
+#announcements::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/paper-fibers.png'); /* Paper texture */
+  opacity: 0.2;
+  z-index: 0;
+}
+
+/* Heading */
+#announcements h3 {
+  font-family: 'Permanent Marker', cursive; /* Handwritten font for noticeboard feel */
+  font-size: 36px;
+  font-weight: 400;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Announcements List */
+.announcements-list {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.announcement-item {
+  background: #fff3cd; /* Light yellow for sticky note effect */
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Remove Alternate Tilt for Odd/Even Items */
+.announcement-item:nth-child(even) {
+  background: #ffeb3b; /* Slightly darker yellow */
+}
+
+/* Pin Icon */
+.announcement-item::before {
+  content: '📌'; /* Pushpin emoji */
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  color: #d32f2f; /* Red pin */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover Effect */
+.announcement-item:hover {
+  transform: translateY(-5px); /* Only lift, no rotation */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 111, 97, 0.5);
+}
+
+/* Announcement Title */
+.announcement-title {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 18px;
+  font-weight: 400;
+  color: #d32f2f; /* Red for title */
+  margin-bottom: 10px;
+}
+
+/* Announcement Content */
+.announcement-content {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #2c3e50;
+  line-height: 1.5;
+}
+
+/* Announcement Date */
+.announcement-date {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* No Announcements Message */
+.no-announcements {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: #2c3e50;
+  font-style: italic;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+
+/* Photos/Videos Section - Futuristic Gallery Style */
+#photos-videos {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #8ab1e8, #4a5f7f, #1a3c6c, #070b0f); /* Updated gradient to match navbar */
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite; /* Gradient animation */
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Gradient Animation Keyframes */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Subtle Holographic Overlay */
+#photos-videos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(138, 177, 232, 0.1), rgba(26, 60, 108, 0.1)); /* Updated to darker blue tones */
+  opacity: 0.3;
+  z-index: 0;
+  animation: shimmer 5s ease infinite;
+}
+
+/* Shimmer Animation for Overlay */
+@keyframes shimmer {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0.3; }
+}
+
+/* Heading with Neon Glow */
+#photos-videos h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 10px rgba(138, 177, 232, 0.8), 0 0 20px rgba(106, 27, 154, 0.5);
+  animation: neonFlicker 2s ease infinite;
+}
+
+/* Neon Flicker Animation for Heading */
+@keyframes neonFlicker {
+  0%, 100% { text-shadow: 0 0 10px rgba(138, 177, 232, 0.8), 0 0 20px rgba(106, 27, 154, 0.5); }
+  50% { text-shadow: 0 0 15px rgba(138, 177, 232, 1), 0 0 30px rgba(106, 27, 154, 0.7); }
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 25px;
+  max-width: 1000px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Gallery Item - 3D Card Effect */
+.gallery-item {
+  position: relative;
+  width: 200px; /* Fixed width */
+  height: 200px; /* Fixed height */
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  background: #1a1a1a; /* Dark background for depth */
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  cursor: pointer;
+}
+
+/* 3D Tilt and Glow on Hover */
+.gallery-item:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(30, 74, 135, 0.7), 0 0 50px rgba(50, 4, 78, 0.5);
+}
+
+/* Reflective Shine on Gallery Item */
+.gallery-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.gallery-item:hover::before {
+  left: 100%;
+}
+
+.gallery-item:focus {
+  outline: 3px solid #8ab1e8;
+  outline-offset: 2px;
+}
+
+/* Media Container (for videos with play icon) */
+.media-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Media Image (Photos) */
+.media-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image fills the container without distortion */
+  border-radius: 15px;
+}
+
+/* Media Video (Videos) */
+.media-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video fills the container without distortion */
+  border-radius: 15px;
+}
+
+/* Custom Play Icon for Videos */
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 60px;
+  height: 60px;
+  background: rgba(106, 27, 154, 0.8);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #ffffff;
+  opacity: 0.8;
+  transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+  animation: pulse 2s ease infinite;
+}
+
+/* Play Icon Shape (Triangle) */
+.play-icon::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 15px solid #ffffff;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  margin-left: 5px;
+}
+
+/* Pulse Animation for Play Icon */
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.gallery-item:hover .play-icon {
+  opacity: 1;
+  background: rgba(138, 177, 232, 0.9);
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Loading Indicator */
+.media-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  background: rgba(106, 27, 154, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(138, 177, 232, 0.5);
+}
+
+/* No Media Message */
+.no-media {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  font-style: italic;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 5px rgba(138, 177, 232, 0.5);
+}
+
+/* Full-Screen Modal */
+.fullscreen-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95); /* Darker overlay for focus */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Fade-In Animation for Modal */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Full-Screen Content */
+.fullscreen-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: zoomIn 0.5s ease;
+}
+
+/* Zoom-In Animation for Modal Content */
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Full-Screen Image */
+.fullscreen-image {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain; /* Ensure the image fits within the viewport */
+  border-radius: 15px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 20px rgba(138, 177, 232, 0.7), 0 0 40px rgba(106, 27, 154, 0.5);
+  background: linear-gradient(45deg, rgba(138, 177, 232, 0.2), rgba(106, 27, 154, 0.2));
+}
+
+/* Full-Screen Video */
+.fullscreen-video {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain; /* Ensure the video fits within the viewport */
+  border-radius: 15px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 20px rgba(138, 177, 232, 0.7), 0 0 40px rgba(106, 27, 154, 0.5);
+  background: linear-gradient(45deg, rgba(138, 177, 232, 0.2), rgba(106, 27, 154, 0.2));
+}
+
+/* Full-Screen Date with Neon Glow */
+.fullscreen-date {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  color: #ffffff;
+  margin-top: 15px;
+  text-shadow: 0 0 5px rgba(138, 177, 232, 0.8), 0 0 10px rgba(106, 27, 154, 0.5);
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 30px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close-button:hover {
+  color: #8ab1e8;
+  transform: rotate(90deg);
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  border: none;
+  font-size: 30px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  border-radius: 50%;
+}
+
+.nav-arrow:hover {
+  background: rgba(138, 177, 232, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-arrow-left {
+  left: -50px;
+}
+
+.nav-arrow-right {
+  right: -50px;
+}
+
+/* Faculty Section - Professional ID Card Style */
+#faculty {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Subtle Paper Texture Overlay */
+#faculty::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/white-paper.png'); /* Subtle paper texture */
+  opacity: 0.1;
+  z-index: 0;
+}
+
+/* Heading */
+#faculty h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff; 
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Faculty Grid */
+.faculty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 30px;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Faculty Card (ID Card Style) */
+.faculty-card {
+  background: #ffffff; /* White background for the card */
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e0e0e0; /* Subtle border */
+}
+
+/* Hover Effect for Faculty Card */
+.faculty-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(74, 95, 127, 0.3); /* Glow with navbar color */
+}
+
+/* Faculty Photo */
+.faculty-photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%; /* Circular photo */
+  margin: 0 auto 15px;
+  display: block;
+  border: 3px solid #8ab1e8; /* Border matching navbar accent */
+  box-shadow: 0 0 10px rgba(138, 177, 232, 0.5);
+}
+
+/* Photo Placeholder (if no photo is available) */
+.faculty-photo-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  color: #666;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 15px;
+  border: 3px solid #8ab1e8;
+}
+
+/* Faculty Info Container */
+.faculty-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Faculty Name */
+.faculty-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #4a5f7f; /* Dark blue to match navbar */
+  margin: 0;
+}
+
+/* Faculty Designation */
+.faculty-designation {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #8ab1e8; /* Light blue to match navbar accent */
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Faculty Details (Qualification, Specialization) */
+.faculty-details {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+/* Faculty Joined Date */
+.faculty-joined {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  color: #999;
+  margin: 0;
+}
+
+/* No Faculty Message */
+.no-faculty {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: #4a5f7f;
+  font-style: italic;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+
+/* Other Sections (Keeping Your Colors) */
+#syllabus {
+  background-color: #a5d6a7;
+  color: #1b5e20;
+}
+
+/* Responsive - Adjust for smaller screens */
+@media (max-width: 768px) {
+  .section {
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+
+  #material {
+    padding: 20px;
+  }
+
+  #material h3 {
+    font-size: 24px;
+  }
+
+  .semester-buttons {
+    gap: 10px;
+  }
+
+  .semester-buttons button {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .material-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 15px;
+  }
+
+  .material-item span {
+    font-size: 14px;
+  }
+
+  .material-item a {
+    font-size: 12px;
+  }
+
+  .no-materials {
+    font-size: 16px;
+  }
+
+  #announcements {
+    padding: 20px;
+  }
+
+  #announcements h3 {
+    font-size: 28px;
+  }
+
+  .announcement-item {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .announcement-title {
+    font-size: 16px;
+  }
+
+  .announcement-content {
+    font-size: 14px;
+  }
+
+  .announcement-date {
+    font-size: 10px;
+  }
+
+  .no-announcements {
+    font-size: 16px;
+  }
+
+  #photos-videos {
+    padding: 20px;
+  }
+
+  #photos-videos h3 {
+    font-size: 28px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .gallery-item {
+    width: 150px;
+    height: 150px;
+  }
+
+  .play-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .play-icon::before {
+    border-left: 12px solid #ffffff;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+  }
+
+  .media-loading {
+    font-size: 12px;
+  }
+
+  .no-media {
+    font-size: 16px;
+  }
+
+  .fullscreen-date {
+    font-size: 12px;
+  }
+
+  .close-button {
+    top: -30px;
+    font-size: 24px;
+  }
+
+  .nav-arrow {
+    font-size: 24px;
+    padding: 8px;
+  }
+
+  .nav-arrow-left {
+    left: -30px;
+  }
+
+  .nav-arrow-right {
+    right: -30px;
+  }
+
+  /* Responsive Design for Faculty Section */
+  #faculty {
+    padding: 20px;
+  }
+
+  #faculty h3 {
+    font-size: 28px;
+  }
+
+  .faculty-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .faculty-card {
+    padding: 15px;
+  }
+
+  .faculty-photo,
+  .faculty-photo-placeholder {
+    width: 100px;
+    height: 100px;
+  }
+
+  .faculty-name {
+    font-size: 16px;
+  }
+
+  .faculty-designation,
+  .faculty-details {
+    font-size: 12px;
+  }
+
+  .faculty-joined {
+    font-size: 10px;
+  }
+
+  .no-faculty {
+    font-size: 16px;
+  }
+}

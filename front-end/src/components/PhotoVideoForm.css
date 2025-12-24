@@ -1,0 +1,234 @@
+/* PhotoVideoForm.css */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for glassmorphism */
+    backdrop-filter: blur(10px); /* Glassmorphism blur effect */
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    max-width: 500px; /* Limit form width for better readability */
+    margin: 0 auto; /* Center the form */
+    color: #ffffff; /* White text for contrast over video background */
+    position: relative; /* Ensure it respects the parent’s layout */
+    z-index: 3; /* Above video and overlay */
+  }
+  
+  .form h3 {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #f6f7f8, #f3f5f7); /* Gradient matching navbar */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  .form div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .form label {
+    font-size: 23px;
+    color: yellow;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  .form select,
+  .form input[type="file"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff; /* Changed from black to white for better contrast */
+    font-size: 18px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Ensure select options are visible */
+  .form select option {
+    color: #ffffff; /* White text for options */
+    background: rgba(74, 95, 127, 0.8); /* Dark background to contrast with white text */
+  }
+  
+  /* Optional: Style for hover on options */
+  .form select option:hover {
+    background: rgba(138, 177, 232, 0.8); /* Light blue on hover */
+    color: #ffffff; /* Ensure text remains visible on hover */
+  }
+  
+  .form select:focus,
+  .form input[type="file"]:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(138, 177, 232, 0.5);
+  }
+  
+  /* File Input Styling */
+  .form input[type="file"] {
+    padding: 5px; /* Reduced padding for file input */
+    border: none; /* Remove default border */
+    background: none;
+    color: #ffffff;
+    width: 100%; /* Ensure it takes full width of the container */
+  }
+  
+  .form input[type="file"]::-webkit-file-upload-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a5f7f;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .form input[type="file"]::-webkit-file-upload-button:hover {
+    background: linear-gradient(90deg, #8ab1e8, #4a5f7f);
+    transform: translateY(-2px);
+  }
+  
+  /* Fallback for non-WebKit browsers (e.g., Firefox) */
+  .form input[type="file"]::-moz-file-upload-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a5f7f;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .form input[type="file"]::-moz-file-upload-button:hover {
+    background: linear-gradient(90deg, #8ab1e8, #4a5f7f);
+    transform: translateY(-2px);
+  }
+  
+  .form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #4a5f7f, #8ab1e8);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  
+  .form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .form button:hover::before {
+    left: 100%;
+  }
+  
+  .form button:hover {
+    background: linear-gradient(90deg, #8ab1e8, #4a5f7f);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Fade-In Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .form {
+      padding: 20px;
+      max-width: 100%;
+    }
+  
+    .form h3 {
+      font-size: 24px;
+    }
+  
+    .form label {
+      font-size: 14px;
+    }
+  
+    .form select,
+    .form input[type="file"] {
+      padding: 8px;
+      font-size: 12px;
+    }
+  
+    .form select option {
+      font-size: 12px; /* Adjust option font size for smaller screens */
+    }
+  
+    .form input[type="file"]::-webkit-file-upload-button,
+    .form input[type="file"]::-moz-file-upload-button {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+  
+    .form button {
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .form {
+      padding: 15px;
+    }
+  
+    .form h3 {
+      font-size: 20px;
+    }
+  
+    .form label {
+      font-size: 12px;
+    }
+  
+    .form select,
+    .form input[type="file"] {
+      padding: 6px;
+      font-size: 10px;
+    }
+  
+    .form select option {
+      font-size: 10px; /* Adjust option font size for smaller screens */
+    }
+  
+    .form input[type="file"]::-webkit-file-upload-button,
+    .form input[type="file"]::-moz-file-upload-button {
+      padding: 5px 10px;
+      font-size: 10px;
+    }
+  
+    .form button {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+  }

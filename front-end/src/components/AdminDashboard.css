@@ -1,0 +1,1366 @@
+/* General Styles for Admin Dashboard */
+.admin-dashboard {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+.college-header {
+  display: flex; /* Add flexbox to align logo and name */
+  align-items: center; /* Vertically center the logo and name */
+  justify-content: center; /* Horizontally center the content */
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Separator line */
+}
+
+.college-logo {
+  position: relative;
+  width: 40px; /* Smaller size to fit nicely in the sidebar */
+  height: 40px;
+  border-radius: 50%;
+}
+
+.college-name {
+  font-size: 20px;
+  color: #ffffff; /* White to match sidebar text */
+  margin: 0;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for readability */
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis if text overflows */
+}
+
+/* Adjust for when sidebar is closed (mobile view) */
+.admin-sidebar:not(.open) .college-header {
+  justify-content: flex-start; /* Align left when sidebar is closed */
+  padding: 10px 15px;
+}
+
+/* Remove the rule that hides the college name when sidebar is closed */
+.admin-sidebar:not(.open) .college-name {
+  /* display: none; */ /* Remove this rule */
+  font-size: 16px; /* Smaller font size to fit in narrow sidebar */
+}
+
+/* Ensure logo margin is appropriate */
+.admin-sidebar:not(.open) .college-logo {
+  margin-right: 3px; /* Keep the margin consistent */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .college-header {
+    padding: 10px 15px;
+  }
+
+  .college-logo {
+    width: 35px;
+    height: 35px;
+    margin-right: 8px;
+  }
+
+  .college-name {
+    font-size: 18px;
+  }
+
+  .admin-sidebar:not(.open) .college-name {
+    font-size: 14px; /* Even smaller font size for closed sidebar on mobile */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .college-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .college-logo {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+
+  .college-name {
+    font-size: 16px;
+  }
+
+  .admin-sidebar.open .college-header {
+    flex-direction: row; /* Revert to row layout when sidebar is open */
+    text-align: left;
+  }
+
+  .admin-sidebar.open .college-logo {
+    margin-right: 8px;
+    margin-bottom: 0;
+  }
+
+  .admin-sidebar:not(.open) .college-name {
+    font-size: 12px; /* Smallest size for closed sidebar on very small screens */
+  }
+}
+
+/* Welcome Section (Full-Screen Background Image) */
+.admin-dashboard .welcome-section {
+  position: fixed;
+  top: 0;
+  left: 250px; /* Leave space for sidebar */
+  width: calc(100vw - 250px);
+  height: 100vh;
+  background: url('E:\front-end\public\Assests\laptop3.jpg') no-repeat center center; /* Adjusted path for React */
+  background-size: cover;
+  background-attachment: fixed; /* Parallax-like effect */
+  z-index: 1; /* Behind sidebar and content */
+}
+
+/* Overlay for Welcome Section Readability */
+.admin-dashboard .welcome-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+/* Welcome Content (Centered) */
+.admin-dashboard .welcome-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.admin-dashboard .welcome-content h3 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease;
+}
+
+.admin-dashboard .welcome-content p {
+  font-size: 24px;
+  font-weight: 300;
+  margin-bottom: 30px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease 0.3s;
+  animation-fill-mode: both;
+}
+
+/* Welcome Animation (Bouncing Dots) */
+.admin-dashboard .welcome-animation {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  animation: fadeIn 1s ease 0.6s;
+  animation-fill-mode: both;
+}
+
+.admin-dashboard .welcome-animation .dot {
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-radius: 50%;
+  animation: bounce 1.8s infinite;
+  opacity: 0.8;
+}
+
+.admin-dashboard .welcome-animation .dot1 {
+  animation-delay: 0s;
+}
+
+.admin-dashboard .welcome-animation .dot2 {
+  animation-delay: 0.3s;
+}
+
+.admin-dashboard .welcome-animation .dot3 {
+  animation-delay: 0.6s;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Sidebar Navigation */
+.admin-dashboard .admin-sidebar {
+  width: 250px;
+  background: #4a5f7f; /* Dark blue matching Navbar */
+  color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Above video and content */
+  transition: transform 0.3s ease;
+}
+
+.admin-dashboard .admin-sidebar .sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.admin-dashboard .admin-sidebar h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-left:13px;
+  margin-top: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.admin-dashboard .admin-sidebar h3::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #8ab1e8, #070b0f);
+  animation: underline 2s infinite;
+}
+
+@keyframes underline {
+  0% { transform: scaleX(0); transform-origin: left; }
+  50% { transform: scaleX(1); transform-origin: left; }
+  100% { transform: scaleX(0); transform-origin: right; }
+}
+
+.admin-dashboard .admin-sidebar .sidebar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.admin-dashboard .admin-sidebar .sidebar-toggle:hover {
+  transform: rotate(90deg);
+}
+
+.admin-dashboard .admin-sidebar .sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-dashboard .admin-sidebar .sidebar-menu li {
+  margin-bottom: 15px;
+}
+
+.admin-dashboard .admin-sidebar .sidebar-menu button {
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-dashboard .admin-sidebar .sidebar-menu button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.admin-dashboard .admin-sidebar .sidebar-menu button:hover::before {
+  left: 100%;
+}
+
+.admin-dashboard .admin-sidebar .sidebar-menu button:hover {
+  background: #8ab1e8; /* Light blue matching Navbar accent */
+  transform: translateX(5px);
+}
+
+/* Home Button in Sidebar */
+.admin-dashboard .admin-sidebar .sidebar-menu .home-btn {
+  background: linear-gradient(90deg, #8ab1e8, #4a5f7f);
+  font-weight: 600;
+  padding: 12px 15px;
+  border-radius: 5px;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.admin-dashboard .admin-sidebar .sidebar-menu .home-btn:hover {
+  background: linear-gradient(90deg, #4a5f7f, #8ab1e8);
+  box-shadow: 0 0 10px rgba(138, 177, 232, 0.5); /* Subtle glow effect */
+  transform: translateX(5px);
+}
+
+.admin-dashboard .admin-sidebar .logout-btn {
+  background: linear-gradient(90deg, #8ab1e8, #070b0f); /* Gradient matching Navbar logout */
+  color: #ffffff;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: background 0.3s ease;
+}
+
+.admin-dashboard .admin-sidebar .logout-btn:hover {
+  background: linear-gradient(90deg, #070b0f, #8ab1e8);
+}
+
+/* Main Content */
+.admin-dashboard .admin-content {
+  margin-left: 250px;
+  padding: 30px;
+  width: calc(100% - 250px);
+  z-index: 2; /* Above video and overlay */
+  position: relative;
+}
+
+.admin-dashboard .dashboard-header {
+  display: flex;
+  justify-content: flex-end; /* Align mobile toggle to the right */
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.admin-dashboard .mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #4a5f7f;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.admin-dashboard .mobile-toggle:hover {
+  transform: rotate(90deg);
+}
+
+/* Sections */
+.admin-dashboard .section {
+  background: transparent; /* Remove default white background */
+  border-radius: 10px;
+  padding: 20px;
+  animation: fadeIn 0.5s ease;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 3; /* Above video and overlay */
+}
+
+/* Materials Section (Full-Screen with Video) */
+.admin-dashboard .materials-section {
+  position: fixed;
+  top: 0;
+  left: 250px; /* Leave space for sidebar */
+  width: calc(100vw - 250px);
+  height: 100vh;
+  background: transparent; /* Remove default white background */
+  padding: 0;
+  margin: 0;
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  z-index: 2; /* Above welcome section but below sidebar */
+}
+
+/* Video Background for Materials Section */
+.admin-dashboard .materials-section .section-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure video covers the area */
+  z-index: -1; /* Behind content */
+}
+
+/* Overlay for Materials Section Readability */
+.admin-dashboard .materials-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*background: rgba(0, 0, 0, 0.5);  Dark overlay for contrast */
+  z-index: 0; /* Above video, below content */
+}
+
+/* Section Header (for Materials Section) */
+.admin-dashboard .materials-section .section-header {
+  position: sticky;
+  top: 0;
+  background: transparent;
+  padding: 20px 40px;
+  margin: 0;
+  z-index: 4; /* Above table and form */
+}
+
+/* Animated Heading for Materials Section */
+.admin-dashboard .materials-section .section-header .animated-heading {
+  font-size: 60px; /* Larger font size */
+  font-weight: 700;
+  background: linear-gradient(90deg, #f6f7f8, #f3f5f7); /* Gradient matching navbar */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: headingScale 1s ease forwards;
+}
+
+/* Heading Animation */
+@keyframes headingScale {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Table Container (Glassmorphism Effect) */
+.admin-dashboard .table-container {
+  margin: 20px 40px;
+  padding: 50px;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+  backdrop-filter: blur(10px); /* Glassmorphism blur effect */
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow-x: auto;
+  position: relative; /* Ensure it respects the parent’s layout */
+  z-index: 3; /* Above video and overlay */
+}
+
+/* Materials Table */
+.admin-dashboard .materials-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.admin-dashboard .materials-table thead {
+  background-color: #4a5f7f;
+  color: #ffffff;
+}
+
+.admin-dashboard .materials-table th {
+  padding: 25px 40px;
+  font-size: 28px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.admin-dashboard .materials-table tbody tr.table-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: rowFadeIn 0.5s ease forwards;
+}
+
+.admin-dashboard .materials-table tbody tr.table-row:hover {
+  transform: scale(1.01);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background: rgba(138, 177, 232, 0.1); /* Subtle blue tint on hover */
+}
+
+/* Row Fade-In Animation */
+@keyframes rowFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.admin-dashboard .materials-table td {
+  padding: 15px 20px;
+  font-size: 23px;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.admin-dashboard .materials-table .view-link {
+  color: yellow;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.admin-dashboard .materials-table .view-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #4a5f7f;
+  transition: width 0.3s ease;
+}
+
+.admin-dashboard .materials-table .view-link:hover::after {
+  width: 100%;
+}
+
+.admin-dashboard .materials-table .view-link:hover {
+  color: #4a5f7f;
+}
+
+/* No Data Message */
+.admin-dashboard .no-data {
+  font-size: 16px;
+  color: #ffffff;
+  font-style: italic;
+  text-align: center;
+  margin: 20px 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 3; /* Above video and overlay */
+}
+
+/* Form Container (Glassmorphism Effect) */
+.admin-dashboard .form-container {
+  margin: 20px 40px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+  backdrop-filter: blur(10px); /* Glassmorphism blur effect */
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative; /* Ensure it respects the parent’s layout */
+  z-index: 3; /* Above video and overlay */
+}
+
+/* Slide-In Animation for Form */
+.admin-dashboard .form-container.animated-form {
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Buttons */
+.admin-dashboard .back-btn,
+.admin-dashboard .retry-btn,
+.admin-dashboard .edit-btn,
+.admin-dashboard .delete-btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button Hover Effect */
+.admin-dashboard .back-btn::before,
+.admin-dashboard .edit-btn::before,
+.admin-dashboard .delete-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.admin-dashboard .back-btn:hover::before,
+.admin-dashboard .edit-btn:hover::before,
+.admin-dashboard .delete-btn:hover::before {
+  left: 100%;
+}
+
+/* Back to Dashboard Button */
+.admin-dashboard .back-btn {
+  background: linear-gradient(90deg, #4a5f7f, #8ab1e8);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  font-weight: 600;
+}
+
+.admin-dashboard .back-btn::before {
+  content: '←'; /* Back arrow icon */
+  font-size: 16px;
+}
+
+.admin-dashboard .back-btn:hover {
+  background: linear-gradient(90deg, #8ab1e8, #4a5f7f);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.admin-dashboard .retry-btn {
+  background: #8ab1e8;
+  color: #ffffff;
+}
+
+.admin-dashboard .retry-btn:hover {
+  background: #4a5f7f;
+  transform: translateY(-2px);
+}
+
+.admin-dashboard .edit-btn {
+  background: #8ab1e8; /* Edit button */
+  color: #ffffff;
+  margin-right: 10px;
+}
+
+.admin-dashboard .edit-btn:hover {
+  background: #4a5f7f;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.admin-dashboard .delete-btn {
+  background: #d32f2f; /* Delete button */
+  color: #ffffff;
+}
+
+.admin-dashboard .delete-btn:hover {
+  background: #b71c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading and Error Messages */
+.admin-dashboard .loading,
+.admin-dashboard .error-message {
+  font-size: 18px;
+  color: #ffffff; /* Changed to white for better contrast over video */
+  text-align: center;
+  margin: 50px 0;
+  position: relative;
+  z-index: 2; /* Above video and overlay */
+}
+
+/* Fade-In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Announcements Section (Full-Screen with Video) */
+.admin-dashboard .announcements-section {
+  position: fixed;
+  top: 0;
+  left: 250px; /* Leave space for sidebar */
+  width: calc(100vw - 250px);
+  height: 100vh;
+  background: transparent; /* Remove default white background */
+  padding: 0;
+  margin: 0;
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  z-index: 2; /* Above welcome section but below sidebar */
+}
+
+/* Video Background for Announcements Section */
+.admin-dashboard .announcements-section .section-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure video covers the area */
+  z-index: -1; /* Behind content */
+}
+
+/* Overlay for Announcements Section Readability */
+.admin-dashboard .announcements-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay for contrast */
+  z-index: 0; /* Above video, below content */
+}
+
+/* Section Header (for Announcements Section) */
+.admin-dashboard .announcements-section .section-header {
+  position: sticky;
+  top: 0;
+  background: transparent;
+  padding: 20px 40px;
+  margin: 0;
+  z-index: 4; /* Above table and form */
+}
+
+/* Animated Heading for Announcements Section */
+.admin-dashboard .announcements-section .section-header .animated-heading {
+  font-size: 60px; /* Larger font size */
+  font-weight: 700;
+  background: linear-gradient(90deg, #f6f7f8, #f3f5f7); /* Gradient matching navbar */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: headingScale 1s ease forwards;
+}
+
+/* Announcements Table */
+.admin-dashboard .announcements-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.admin-dashboard .announcements-table thead {
+  background-color: #4a5f7f;
+  color: #ffffff;
+}
+
+.admin-dashboard .announcements-table th {
+  padding: 25px 40px;
+  font-size: 28px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.admin-dashboard .announcements-table tbody tr.table-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: rowFadeIn 0.5s ease forwards;
+}
+
+.admin-dashboard .announcements-table tbody tr.table-row:hover {
+  transform: scale(1.01);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background: rgba(138, 177, 232, 0.1); /* Subtle blue tint on hover */
+}
+
+.admin-dashboard .announcements-table td {
+  padding: 15px 20px;
+  font-size: 23px;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-dashboard .admin-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .admin-dashboard .admin-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .admin-dashboard .admin-sidebar .sidebar-toggle {
+    display: block;
+  }
+
+  .admin-dashboard .admin-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .admin-dashboard .mobile-toggle {
+    display: block;
+  }
+
+  .admin-dashboard .welcome-section {
+    left: 0;
+    width: 100vw;
+  }
+
+  .admin-dashboard .welcome-content {
+    padding: 15px;
+  }
+
+  .admin-dashboard .welcome-content h3 {
+    font-size: 36px;
+  }
+
+  .admin-dashboard .welcome-content p {
+    font-size: 18px;
+  }
+
+  .admin-dashboard .materials-section,
+  .admin-dashboard .announcements-section {
+    left: 0;
+    width: 100vw;
+  }
+
+  .admin-dashboard .materials-section .section-header,
+  .admin-dashboard .announcements-section .section-header {
+    padding: 15px 20px;
+  }
+
+  .admin-dashboard .materials-section .section-header .animated-heading,
+  .admin-dashboard .announcements-section .section-header .animated-heading {
+    font-size: 40px;
+  }
+
+  .admin-dashboard .table-container,
+  .admin-dashboard .form-container {
+    margin: 15px 20px;
+    padding: 15px;
+  }
+
+  .admin-dashboard .materials-table th,
+  .admin-dashboard .materials-table td,
+  .admin-dashboard .announcements-table th,
+  .admin-dashboard .announcements-table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .admin-dashboard .edit-btn,
+  .admin-dashboard .delete-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-dashboard .welcome-content h3 {
+    font-size: 28px;
+  }
+
+  .admin-dashboard .welcome-content p {
+    font-size: 16px;
+  }
+
+  .admin-dashboard .welcome-animation .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .admin-dashboard .materials-section .section-header .animated-heading,
+  .admin-dashboard .announcements-section .section-header .animated-heading {
+    font-size: 32px;
+  }
+
+  .admin-dashboard .table-container,
+  .admin-dashboard .form-container {
+    margin: 10px 15px;
+    padding: 10px;
+  }
+
+  .admin-dashboard .materials-table th,
+  .admin-dashboard .materials-table td,
+  .admin-dashboard .announcements-table th,
+  .admin-dashboard .announcements-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .admin-dashboard .edit-btn,
+  .admin-dashboard .delete-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+}
+/* Photos/Videos Section (Full-Screen with Video) */
+.admin-dashboard .photo-video-section {
+  position: fixed;
+  top: 0;
+  left: 250px; /* Leave space for sidebar */
+  width: calc(100vw - 250px);
+  height: 100vh;
+  background: transparent; /* Remove default white background */
+  padding: 0;
+  margin: 0;
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  z-index: 2; /* Above welcome section but below sidebar */
+}
+
+/* Video Background for Photos/Videos Section */
+.admin-dashboard .photo-video-section .section-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure video covers the area */
+  z-index: -1; /* Behind content */
+}
+
+/* Overlay for Photos/Videos Section Readability */
+.admin-dashboard .photo-video-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay for contrast */
+  z-index: 0; /* Above video, below content */
+}
+
+/* Section Header (for Photos/Videos Section) */
+.admin-dashboard .photo-video-section .section-header {
+  position: sticky;
+  top: 0;
+  background: transparent;
+  padding: 20px 40px;
+  margin: 0;
+  z-index: 4; /* Above table and form */
+}
+
+/* Animated Heading for Photos/Videos Section */
+.admin-dashboard .photo-video-section .section-header .animated-heading {
+  font-size: 60px; /* Larger font size */
+  font-weight: 700;
+  background: linear-gradient(90deg, #f6f7f8, #f3f5f7); /* Gradient matching navbar */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: headingScale 1s ease forwards;
+}
+
+/* Photos/Videos Table */
+.admin-dashboard .photo-video-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.admin-dashboard .photo-video-table thead {
+  background-color: #4a5f7f;
+  color: #ffffff;
+}
+
+.admin-dashboard .photo-video-table th {
+  padding: 25px 40px;
+  font-size: 28px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.admin-dashboard .photo-video-table tbody tr.table-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: rowFadeIn 0.5s ease forwards;
+}
+
+.admin-dashboard .photo-video-table tbody tr.table-row:hover {
+  transform: scale(1.01);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background: rgba(138, 177, 232, 0.1); /* Subtle blue tint on hover */
+}
+
+.admin-dashboard .photo-video-table td {
+  padding: 15px 20px;
+  font-size: 23px;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.admin-dashboard .photo-video-table .view-link{
+  color: yellow;
+}
+
+/* Responsive Design for Photos/Videos Section */
+@media (max-width: 768px) {
+  .admin-dashboard .photo-video-section {
+    left: 0;
+    width: 100vw;
+  }
+
+  .admin-dashboard .photo-video-section .section-header {
+    padding: 15px 20px;
+  }
+
+  .admin-dashboard .photo-video-section .section-header .animated-heading {
+    font-size: 40px;
+  }
+
+  .admin-dashboard .photo-video-table th,
+  .admin-dashboard .photo-video-table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-dashboard .photo-video-section .section-header .animated-heading {
+    font-size: 32px;
+  }
+
+  .admin-dashboard .photo-video-table th,
+  .admin-dashboard .photo-video-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+}
+/* Faculty Section (Full-Screen with Video) */
+.admin-dashboard .faculty-section {
+  position: fixed;
+  top: 0;
+  left: 250px; /* Leave space for sidebar */
+  width: calc(100vw - 250px);
+  height: 100vh;
+  background: transparent; /* Remove default white background */
+  padding: 0;
+  margin: 0;
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  z-index: 2; /* Above welcome section but below sidebar */
+}
+
+/* Video Background for Faculty Section */
+.admin-dashboard .faculty-section .section-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure video covers the area */
+  z-index: -1; /* Behind content */
+}
+
+/* Overlay for Faculty Section Readability */
+.admin-dashboard .faculty-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay for contrast */
+  z-index: 0; /* Above video, below content */
+}
+
+/* Section Header (for Faculty Section) */
+.admin-dashboard .faculty-section .section-header {
+  position: sticky;
+  top: 0;
+  background: transparent;
+  padding: 20px 40px;
+  margin: 0;
+  z-index: 4; /* Above table and form */
+}
+
+/* Animated Heading for Faculty Section */
+.admin-dashboard .faculty-section .section-header .animated-heading {
+  font-size: 60px; /* Larger font size */
+  font-weight: 700;
+  background: linear-gradient(90deg, #f6f7f8, #f3f5f7); /* Gradient matching navbar */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: headingScale 1s ease forwards;
+}
+
+/* Faculty Table */
+.admin-dashboard .faculty-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.admin-dashboard .faculty-table thead {
+  background-color: #4a5f7f;
+  color: #ffffff;
+}
+
+.admin-dashboard .faculty-table th {
+  padding: 25px 40px;
+  font-size: 28px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.admin-dashboard .faculty-table tbody tr.table-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: rowFadeIn 0.5s ease forwards;
+}
+
+.admin-dashboard .faculty-table tbody tr.table-row:hover {
+  transform: scale(1.01);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background: rgba(138, 177, 232, 0.1); /* Subtle blue tint on hover */
+}
+
+.admin-dashboard .faculty-table td {
+  padding: 15px 20px;
+  font-size: 23px;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.admin-dashboard .faculty-table td img {
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+/* Responsive Design for Faculty Section */
+@media (max-width: 768px) {
+  .admin-dashboard .faculty-section {
+    left: 0;
+    width: 100vw;
+  }
+
+  .admin-dashboard .faculty-section .section-header {
+    padding: 15px 20px;
+  }
+
+  .admin-dashboard .faculty-section .section-header .animated-heading {
+    font-size: 40px;
+  }
+
+  .admin-dashboard .faculty-table th,
+  .admin-dashboard .faculty-table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .admin-dashboard .faculty-table td img {
+    max-width: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-dashboard .faculty-section .section-header .animated-heading {
+    font-size: 32px;
+  }
+
+  .admin-dashboard .faculty-table th,
+  .admin-dashboard .faculty-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .admin-dashboard .faculty-table td img {
+    max-width: 30px;
+  }
+}
+
+/* Ensure existing animations are defined */
+@keyframes headingScale {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes rowFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* ... (previous styles remain the same) */
+
+/* Syllabus Section (Full-Screen with Video) */
+.admin-dashboard .syllabus-section {
+  position: fixed;
+  top: 0;
+  left: 250px; /* Leave space for sidebar */
+  width: calc(100vw - 250px);
+  height: 100vh;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  z-index: 2;
+}
+
+/* Video Background for Syllabus Section */
+.admin-dashboard .syllabus-section .section-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Overlay for Syllabus Section Readability */
+.admin-dashboard .syllabus-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+/* Section Header (for Syllabus Section) */
+.admin-dashboard .syllabus-section .section-header {
+  position: sticky;
+  top: 0;
+  background: transparent;
+  padding: 20px 40px;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 4;
+}
+
+/* Animated Heading for Syllabus Section */
+.admin-dashboard .syllabus-section .section-header .animated-heading {
+  font-size: 60px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #f6f7f8, #f3f5f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: headingScale 1s ease forwards;
+}
+
+/* Back Button Styling */
+.admin-dashboard .syllabus-section .section-header .back-btn {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-dashboard .syllabus-section .section-header .back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Syllabus Table (Large and Prominent) */
+.admin-dashboard .syllabus-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.admin-dashboard .syllabus-table thead {
+  background-color: #4a5f7f;
+  color: #ffffff;
+}
+
+.admin-dashboard .syllabus-table th {
+  padding: 30px 50px;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.admin-dashboard .syllabus-table tbody tr.table-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: rowFadeIn 0.5s ease forwards;
+  min-height: 80px;
+}
+
+.admin-dashboard .syllabus-table tbody tr.table-row:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  background: rgba(138, 177, 232, 0.15);
+}
+
+.admin-dashboard .syllabus-table td {
+  padding: 20px 30px;
+  font-size: 26px;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  vertical-align: middle;
+}
+
+.admin-dashboard .syllabus-table td a {
+  color: #8ab1e8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.admin-dashboard .syllabus-table td a:hover {
+  color: #f6f7f8;
+  text-decoration: underline;
+}
+
+/* Responsive Design for Syllabus Section */
+@media (max-width: 768px) {
+  .admin-dashboard .syllabus-section {
+    left: 0;
+    width: 100vw;
+  }
+
+  .admin-dashboard .syllabus-section .section-header {
+    padding: 15px 20px;
+  }
+
+  .admin-dashboard .syllabus-section .section-header .animated-heading {
+    font-size: 40px;
+  }
+
+  .admin-dashboard .syllabus-section .section-header .back-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  .admin-dashboard .syllabus-table th {
+    padding: 15px 25px;
+    font-size: 20px;
+  }
+
+  .admin-dashboard .syllabus-table td {
+    padding: 10px 15px;
+    font-size: 16px;
+  }
+
+  .admin-dashboard .syllabus-table tbody tr.table-row {
+    min-height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-dashboard .syllabus-section .section-header .animated-heading {
+    font-size: 32px;
+  }
+
+  .admin-dashboard .syllabus-section .section-header .back-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .admin-dashboard .syllabus-table th {
+    padding: 10px 15px;
+    font-size: 16px;
+  }
+
+  .admin-dashboard .syllabus-table td {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  .admin-dashboard .syllabus-table tbody tr.table-row {
+    min-height: 50px;
+  }
+}
+

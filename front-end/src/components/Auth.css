@@ -1,0 +1,371 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+#background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+#background-video + img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.container {
+  position: relative;
+  width: 850px;
+  height: 550px;
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  margin-top: 180px;
+}
+
+.toggle-box {
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+
+.toggle-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #6b89dc;
+  border-radius: 0 150px 150px 0;
+  z-index: -1;
+  transition: border-radius 0.6s ease-in-out, transform 0.6s ease-in-out;
+  transform: scale(1);
+}
+
+.container.active .toggle-box::before {
+  border-radius: 150px 0 0 150px;
+  transform: scale(1.05);
+}
+
+.toggle-panel {
+  width: 100%;
+  height: 100%;
+  color: #2d52c0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.toggle-panel h1,
+.toggle-panel p,
+.toggle-panel .btn {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.container .toggle-panel h1,
+.container .toggle-panel p,
+.container .toggle-panel .btn {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.container.active .toggle-panel h1,
+.container.active .toggle-panel p,
+.container.active .toggle-panel .btn {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.container .toggle-panel h1,
+.container .toggle-panel p,
+.container .toggle-panel .btn {
+  animation: slideInLeft 0.3s ease forwards 0.3s;
+}
+
+.container.active .toggle-panel h1,
+.container.active .toggle-panel p,
+.container.active .toggle-panel .btn {
+  animation: slideInRight 0.3s ease forwards 0.3s;
+}
+
+.toggle-panel h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.toggle-panel p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.toggle-panel .btn {
+  width: 160px;
+  height: 46px;
+  background: transparent;
+  border: 2px solid white;
+  box-shadow: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.toggle-panel .btn:hover {
+  background: white;
+  color: #6b89dc;
+  transform: scale(1.05);
+}
+
+.container .form-box {
+  width: 50%;
+  height: 100%;
+  background: #2d52c0;
+  display: flex;
+  align-items: center;
+  color: black;
+  text-align: center;
+  padding: 40px;
+  z-index: 1;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.container .form-box.login,
+.container .form-box.register {
+  display: none;
+  color: #d7dae3;
+}
+
+.container .form-box.login {
+  display: flex;
+  opacity: 1;
+  transform: translateX(0);
+  animation: slideInRight 0.5s ease forwards;
+}
+
+.container.active .form-box.register {
+  display: flex;
+  opacity: 1;
+  transform: translateX(0);
+  animation: slideInLeft 0.5s ease forwards;
+}
+
+.container.active .form-box.login {
+  display: none;
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.container form {
+  width: 100%;
+}
+
+.container h1 {
+  font-size: 36px;
+  margin: -10px 0 30px;
+}
+
+.container .input-box {
+  position: relative;
+  margin: 30px 0;
+}
+
+.container .input-box input {
+  width: 100%;
+  padding: 13px 40px 13px 13px;
+  background: rgb(233, 230, 230);
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: rgb(94, 94, 94);
+  font-weight: 500;
+}
+
+.container .input-box input::placeholder {
+  color: gray;
+  font-weight: 400;
+}
+
+.container .input-box i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: rgb(95, 92, 92);
+}
+
+.container .btn {
+  width: 85%;
+  height: 48px;
+  background: #3b61d4;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.container .btn:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+.container .error {
+  color: #ff4040;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+    min-height: 550px;
+  }
+
+  .toggle-box,
+  .form-box {
+    width: 100%;
+    height: 50%;
+  }
+
+  .toggle-box::before {
+    border-radius: 150px 150px 0 0;
+  }
+
+  .container.active .toggle-box::before {
+    border-radius: 0 0 150px 150px;
+    transform: scale(1.05);
+  }
+
+  .container .form-box {
+    transform: translateY(50px);
+  }
+
+  .container .form-box.login {
+    animation: slideInUp 0.5s ease forwards;
+  }
+
+  .container.active .form-box.register {
+    animation: slideInUp 0.5s ease forwards;
+  }
+
+  .container.active .form-box.login {
+    transform: translateY(50px);
+  }
+
+  .container .toggle-panel h1,
+  .container .toggle-panel p,
+  .container .toggle-panel .btn {
+    transform: translateY(-20px);
+  }
+
+  .container.active .toggle-panel h1,
+  .container.active .toggle-panel p,
+  .container.active .toggle-panel .btn {
+    transform: translateY(20px);
+  }
+
+  .container .toggle-panel h1,
+  .container .toggle-panel p,
+  .container .toggle-panel .btn {
+    animation: slideInDown 0.3s ease forwards 0.3s;
+  }
+
+  .container.active .toggle-panel h1,
+  .container.active .toggle-panel p,
+  .container.active .toggle-panel .btn {
+    animation: slideInUp 0.3s ease forwards 0.3s;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .form-box {
+    padding: 20px;
+  }
+
+  .toggle-panel h1 {
+    font-size: 30px;
+  }
+}

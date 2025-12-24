@@ -1,0 +1,16 @@
+index.css /* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+ /* background: #f4f4f4 !important;  Ensure the background is correct */
+  overflow-x: hidden;
+}
+/* Inside index.css or App.css */
+html {
+  scroll-behavior: smooth;
+}
